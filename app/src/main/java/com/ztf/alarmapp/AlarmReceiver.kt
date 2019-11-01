@@ -11,10 +11,12 @@ class AlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
         Log.e("aaa", "收到")
         MainActivity.activity.wakeUpAndUnlock()
-        openDing(MainActivity.mPkgName, context)
+        openApk("com.example.mockgps",context)
+        Thread.sleep(5000)
+        openApk(MainActivity.mPkgName, context)
     }
 
-    fun openDing(packageName: String, context: Context?) {
+    fun openApk(packageName: String, context: Context?) {
         val packageManager = context?.packageManager
 //        var pi = packageManager?.getPackageInfo("com.alibaba.android.rimet", 0)
         val resolveIntent = Intent(Intent.ACTION_MAIN, null)
